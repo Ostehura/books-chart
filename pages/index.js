@@ -56,6 +56,28 @@ let data = {
   ],
 };
 
+function dataSort() {
+  let totalWordCount = []
+  for (let i = 0; i < Data.length; i++) {
+    let count = 0;
+    for (let j = 0; j < Data[i].books.length; j++) {
+      count += Data[i].books[j].count;
+    }
+    totalWordCount.push(count);
+  }
+  console.log('total', totalWordCount);
+  for (let i = 0; i < Data.length; i++)
+    for (let j = i + 1; j < Data.length; j++) {
+      if (totalWordCount[j] > totalWordCount[i]) {
+        let tmp = Data[j], tmp1 = totalWordCount[j];
+        Data[j] = Data[i];
+        Data[i] = tmp;
+        totalWordCount[j] = totalWordCount[i];
+        totalWordCount[i] = tmp1;
+      }
+    }
+}
+
 const options = {
   indexAxis: 'y',
   // Elements options apply to all of the options unless overridden in a dataset
@@ -127,18 +149,10 @@ function generateDataSets() {
 }
 
 export default function Home() {
-
+  dataSort();
   generateDataSets();
   return (
     <>
-      {/* <Nav activeKey="/" variant="pills" >
-        <Nav.Item>
-          <Nav.Link href="/" >Home</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/about-us">About us</Nav.Link>
-        </Nav.Item>
-      </Nav> */}
       <Bar data={data} options={options} />
     </>
   )
