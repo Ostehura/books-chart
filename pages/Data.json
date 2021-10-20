@@ -1,0 +1,199 @@
+[
+  {
+    "name": "Lord of the Ring Universe",
+    "books": [
+      {
+        "name": "The Fellowship of the Ring",
+        "count": 187790
+      },
+      {
+        "name": "The Two Towers",
+        "count": 156198
+      },
+      {
+        "name": "The Return of the King",
+        "count": 137115
+      },
+      {
+        "name": "The Hobbit",
+        "count": 95356
+      },
+      {
+        "name": "The Silmarillion",
+        "count": 130112
+      }
+    ]
+  },
+  {
+    "name": "Harry Potter Universe",
+    "books": [
+      {
+        "name": "Harry Potter and the Sorcerer’s Stones",
+        "count": 76944
+      },
+      {
+        "name": "Harry Potter and the Chamber of Secrets",
+        "count": 85141
+      },
+      {
+        "name": "Harry Potter and the Prisoner of Azkaban",
+        "count": 107253
+      },
+      {
+        "name": "Harry Potter and the Goblet of Fire",
+        "count": 190637
+      },
+      {
+        "name": "Harry Potter and the Order of the Phoenix",
+        "count": 257045
+      },
+      {
+        "name": "Harry Potter and the Half-Blood Prince",
+        "count": 168923
+      },
+      {
+        "name": "Harry Potter and the Deathly Hallows",
+        "count": 198227
+      }
+    ]
+  },
+  {
+    "name": "Hunger Games Universe",
+    "books": [
+      {
+        "name": "Hunger Games",
+        "count": 99750
+      },
+      {
+        "name": "Hunger Games: Catching Fire",
+        "count": 101564
+      },
+      {
+        "name": "Hunger Games: Mockingjay",
+        "count": 100269
+      }
+    ]
+  },
+  {
+    "name": "Universe of Narnia",
+    "books": [
+      {
+        "name": "The Lion, The Witch, and the Wardrobe",
+        "count": 38421
+      },
+      {
+        "name": "Prince Caspian",
+        "count": 46290
+      },
+      {
+        "name": "The Voyage of the Dawn Treader",
+        "count": 53960
+      },
+      {
+        "name": "The Silver Chair",
+        "count": 51022
+      },
+      {
+        "name": "The Horse and His Boy",
+        "count": 48029
+      },
+      {
+        "name": "The Magician’s Nephew",
+        "count": 64480
+      },
+      {
+        "name": "The Last Battle",
+        "count": 43333
+      }
+    ]
+  },
+  {
+    "name": "Dune Universe",
+    "books": [
+      {
+        "name": "Dune",
+        "count": 188000
+      },
+      {
+        "name": "Dune Messiah",
+        "count": 60000
+      },
+      {
+        "name": "Children of Dune",
+        "count": 148000
+      },
+      {
+        "name": "God Emperor of Dune",
+        "count": 138000
+      },
+      {
+        "name": "Heretics of Dune",
+        "count": 164000
+      },
+      {
+        "name": "Chapterhouse Dune",
+        "count": 141000
+      }
+    ]
+  },
+  {
+    "name": "The Hitchhiker's Guide to the Galaxy Universe",
+    "books": [
+      {
+        "name": "The Hitchhiker's Guide to the Galaxy",
+        "count": 46333
+      },
+      {
+        "name": "The Restaurant at the End of the Universe",
+        "count": 46333
+      },
+      {
+        "name": "Life, the Universe and Everything",
+        "count": 51978
+      },
+      {
+        "name": "So Long, and Thanks for All the Fish",
+        "count":42859
+      },
+      {
+        "name":"Mostly Harmless",
+        "count":64659
+      }
+    ]
+  },
+  {
+    "name":"Miss Peregrine's Home for Peculiar Children Universe*",
+    "books":[
+      {
+        "name":"Miss Peregrine's Home for Peculiar Children ",
+        "count":84898
+      },
+      {
+        "name":"Hollow City",
+        "count":95667
+      },
+      {
+        "name":"Library of Souls",
+        "count":113082
+      }
+    ]
+  },
+  {
+    "name":"His Dark Materisals Universe",
+    "books":[
+      {
+        "name":"The Golden Compass",
+        "count": 112815
+      },
+      {
+        "name":"The Subtle Knife",
+        "count":  109120
+      },
+      {
+        "name":"The Amber Spyglass",
+        "count":168640
+      }
+
+    ]
+  }
+]
