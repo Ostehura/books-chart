@@ -1,7 +1,8 @@
-import React from 'react';
-import { Nav } from 'react-bootstrap'
+import { Formik } from 'formik';
+import React, { useState } from 'react';
+import { Button, Card, Col, Container, Form, Nav, Row } from 'react-bootstrap'
 import { Bar } from 'react-chartjs-2';
-import Data from './Data.json'
+import DATA from './Data.json'
 
 const backgroundColors = [
   'rgba(255, 99, 132, 0.2)',
@@ -11,7 +12,17 @@ const backgroundColors = [
   'rgba(153, 102, 255, 0.2)',
   'rgba(255, 159, 64, 0.2)',
   'rgba(255, 0, 191, 0.2)',
-  'rgba(128,172, 48, 0.2)'
+  'rgba(128,172, 48, 0.2)',
+  'rgba(40,49, 48, 0.2)',
+  'rgba(40,249, 48, 0.2)',
+  'rgba(140,99, 172, 0.2)',
+  'rgba(40,249, 172, 0.2)',
+  'rgba(255, 101, 9,0.2)',
+  'rgba(120, 101, 255, 0.2)',
+  'rgba(238, 197, 191,0.2)',
+  'rgba(238, 65, 191,0.2)',
+  'rgba(238, 255, 126, 0.2)',
+  'rgba(28, 255, 126, 0.2)'
 ]
 const borderColors = [
   'rgba(255, 99, 132, 1)',
@@ -21,62 +32,23 @@ const borderColors = [
   'rgba(153, 102, 255, 1)',
   'rgba(255, 159, 64, 1)',
   'rgba(255, 0, 191, 1)',
-  'rgba(128,172, 48, 1)'
+  'rgba(128,172, 48, 1)',
+  'rgba(40,49, 48, 1)',
+  'rgba(40,249, 48, 1)',
+  'rgba(140,99, 172, 1)',
+  'rgba(40,249, 172, 1)',
+  'rgba(255, 101, 9,1)',
+  'rgba(120, 101, 255, 1)',
+  'rgba(238, 197, 191,1)',
+  'rgba(238, 65, 191,1)',
+  'rgba(238, 255, 126, 1)',
+  'rgba(28, 255, 126, 1)'
 ]
 
-let data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  datasets: [
-    {
-
-      data: [12],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-
-      ],
-      borderWidth: 1,
-    },
-    {
-      label: '# of antivotes',
-      data: [82],
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.2)',
-
-      ],
-      borderColor: [
-        'rgba(54, 162, 235, 1)',
-
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-
-function dataSort() {
-  let totalWordCount = []
-  for (let i = 0; i < Data.length; i++) {
-    let count = 0;
-    for (let j = 0; j < Data[i].books.length; j++) {
-      count += Data[i].books[j].count;
-    }
-    totalWordCount.push(count);
-  }
-  console.log('total', totalWordCount);
-  for (let i = 0; i < Data.length; i++)
-    for (let j = i + 1; j < Data.length; j++) {
-      if (totalWordCount[j] > totalWordCount[i]) {
-        let tmp = Data[j], tmp1 = totalWordCount[j];
-        Data[j] = Data[i];
-        Data[i] = tmp;
-        totalWordCount[j] = totalWordCount[i];
-        totalWordCount[i] = tmp1;
-      }
-    }
-}
+// let data = {
+//   labels: [],
+//   datasets: [],
+// };
 
 const options = {
   indexAxis: 'y',
@@ -108,52 +80,181 @@ const options = {
     },
   },
 };
-function generateDataSets() {
-  console.log("generateDataSets");
-  let datasets = [], labels = [];
-  let dsbooks = [];
-  let totalDatasets = 0, mbooks = 0;
-  for (let i = 0; i < Data.length; i++) {
-
-    mbooks = Math.max(mbooks, Data[i].books.length);
-    dsbooks.push(totalDatasets);
-    totalDatasets += Data[i].books.length;
-  }
-
-  for (let i = 0; i < totalDatasets; i++) {
-    datasets.push({ data: [], backgroundColor: [], borderColor: [], borderWidth: 1, label: i + 1 });
-  }
-
-  for (let i = 0; i < Data.length; i++)
-    labels.push(Data[i].name);
-  for (let j = 0; j < totalDatasets; j++) {
-    for (let i = 0; i < mbooks; i++) {
-      datasets[j].data.push(0);
-    }
-  }
-
-  for (let j = 0; j < totalDatasets; j++) {
-    for (let i = 0; i < Data.length; i++) {
-      let o = j - dsbooks[i];
-      if (o >= Data[i].books.length || o < 0) continue;
-
-      datasets[j].data[i] = Data[i].books[o].count;
-      datasets[j].backgroundColor.push(backgroundColors[o]);
-      datasets[j].borderColor.push(borderColors[o]);
-      datasets[j].label = Data[i].books[o].name;
-    }
-  }
-  data.labels = labels;
-  data.datasets = datasets;
-  return;
-}
 
 export default function Home() {
-  dataSort();
-  generateDataSets();
+  let [data, setData] = useState(DATA);
+
+  const onSubmit = ({ universeName, bookName, wordCount }) => {
+
+    let book = { name: bookName, count: wordCount };
+    let index = data.findIndex(element => element.name == universeName)
+    if (index == -1) {
+      let bookUniverse = { name: universeName, books: [] };
+      bookUniverse.books.push(book);
+      let newData = JSON.parse(JSON.stringify(data));
+      newData.push(bookUniverse);
+      setData(newData);
+
+    }
+    else {
+      let newData = JSON.parse(JSON.stringify(data));
+      newData[index].books.push(book);
+      setData(newData);
+    }
+  }
+
+  const onReset = () => {
+    console.log("RESET")
+    setData(DATA);
+  }
+
+  const generateDataset = (data) => {
+    console.log("generateDataSets");
+    let datasets = [], labels = [];
+    let dsbooks = [];
+    let totalDatasets = 0, mbooks = 0;
+    for (let i = 0; i < data.length; i++) {
+
+      mbooks = Math.max(mbooks, data[i].books.length);
+      dsbooks.push(totalDatasets);
+      totalDatasets += data[i].books.length;
+    }
+
+    for (let i = 0; i < totalDatasets; i++) {
+      datasets.push({ data: [], backgroundColor: [], borderColor: [], borderWidth: 1, label: i + 1 });
+    }
+
+    for (let i = 0; i < data.length; i++)
+      labels.push(data[i].name);
+    for (let j = 0; j < totalDatasets; j++) {
+      for (let i = 0; i < mbooks; i++) {
+        datasets[j].data.push(0);
+      }
+    }
+
+    for (let j = 0; j < totalDatasets; j++) {
+      for (let i = 0; i < data.length; i++) {
+        let o = j - dsbooks[i];
+        if (o >= data[i].books.length || o < 0) continue;
+
+        datasets[j].data[i] = data[i].books[o].count;
+        datasets[j].backgroundColor.push(backgroundColors[o]);
+        datasets[j].borderColor.push(borderColors[o]);
+        datasets[j].label = data[i].books[o].name;
+      }
+    }
+    return { labels, datasets };
+  }
+
+  const sortData = (data) => {
+    let totalWordCount = []
+    for (let i = 0; i < data.length; i++) {
+      let count = 0;
+      for (let j = 0; j < data[i].books.length; j++) {
+        count += data[i].books[j].count;
+      }
+      totalWordCount.push(count);
+    }
+    console.log('total', totalWordCount);
+    for (let i = 0; i < data.length; i++) {
+      for (let j = i + 1; j < data.length; j++) {
+        if (totalWordCount[j] > totalWordCount[i]) {
+          let tmp = data[j], tmp1 = totalWordCount[j];
+          data[j] = data[i];
+          data[i] = tmp;
+          totalWordCount[j] = totalWordCount[i];
+          totalWordCount[i] = tmp1;
+        }
+      }
+    }
+    return data;
+  }
+
+
+  let universeName = "", bookName = "", wordCount = 0;
+
+  // dataSort();
+  // generateDataSets();
   return (
     <>
-      <Bar data={data} options={options} />
+      <Bar data={generateDataset(sortData(data))} options={options} />
+      <Container fluid="sm">
+        <Card>
+          <Card.Header>Enter book universe</Card.Header>
+          <Formik
+            onSubmit={onSubmit}
+            onReset={onReset}
+
+
+            initialValues={{
+              universeName: universeName,
+              bookName: bookName,
+              wordCount: wordCount
+            }}>
+            {({
+              handleSubmit,
+              handleChange,
+              handleReset,
+              values,
+              touched,
+              errors,
+              setValues,
+            }) => (
+              <Form onSubmit={handleSubmit}>
+
+                <Container>
+                  <Form.Group as={Row}>
+                    <Form.Label column sm="2">Enter book universe name</Form.Label>
+                    <Col sm="10">
+                      <Form.Control
+                        name="universeName"
+                        type="text"
+                        placeholder="Enter name"
+                        value={values.universeName}
+                        onChange={handleChange}
+                        isInvalid={touched.universeName && !!errors.universeName}
+                      />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row}>
+                    <Form.Label column sm="2">Enter book name</Form.Label>
+                    <Col sm="10">
+                      <Form.Control
+                        name="bookName"
+                        type="text"
+                        placeholder="Enter name"
+                        value={values.bookName}
+                        onChange={handleChange}
+                        isInvalid={touched.bookName && !!errors.bookName}
+                      />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row}>
+                    <Form.Label column sm="2">Enter number of words</Form.Label>
+                    <Col sm="10">
+                      <Form.Control
+                        name="wordCount"
+                        type="number"
+                        placeholder="Enter number"
+                        value={values.wordCount}
+                        onChange={handleChange}
+                        isInvalid={touched.wordCount && !!errors.wordCount} />
+                    </Col>
+                  </Form.Group>
+                  <Button variant="primary" type="submit"
+                  // onClick={submit(values.name, values.wordCount)}
+                  >
+                    Submit
+                  </Button>
+                  <Button variant="primary" type="reset" onClick={handleReset}>Reset</Button>
+                </Container>
+
+              </Form>
+            )}
+          </Formik>
+        </Card>
+      </Container>
+
     </>
   )
 }
