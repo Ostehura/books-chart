@@ -170,88 +170,110 @@ export default function Home() {
     return data;
   }
 
+  const validate = (values) => {
+    const errors = {};
+    if (!values.universeName) errors.universeName = 'Required';
+    if (!values.bookName) errors.bookName = 'Required'
+    if (!(!values.universeName && !values.bookName)) {
+      let o = data.findIndex((universe) => universe.name == values.universeName);
+
+      if (o != -1 && data[o].books.findIndex((book) => book.name == values.bookName) != -1) errors.bookName = 'Each book in book universe should have unique name'
+
+    }
+    if (!values.wordCount) errors.wordCount = 'Required';
+    else if (values.wordCount < 0) errors.wordCount = 'Couldn`t be negative';
+
+    return errors;
+  }
+
 
   let universeName = "", bookName = "", wordCount = 0;
 
-  // dataSort();
-  // generateDataSets();
+
   return (
     <>
       <Bar data={generateDataset(sortData(data))} options={options} />
       <Container fluid="sm">
         <Card>
-          <Card.Header>Enter book universe</Card.Header>
-          <Formik
-            onSubmit={onSubmit}
-            onReset={onReset}
+          <Card.Header>Add book universe</Card.Header>
+          <Card.Body>
 
+            <Formik
+              onSubmit={onSubmit}
+              onReset={onReset}
+              validate={validate}
 
-            initialValues={{
-              universeName: universeName,
-              bookName: bookName,
-              wordCount: wordCount
-            }}>
-            {({
-              handleSubmit,
-              handleChange,
-              handleReset,
-              values,
-              touched,
-              errors,
-              setValues,
-            }) => (
-              <Form onSubmit={handleSubmit}>
+              initialValues={{
+                universeName: universeName,
+                bookName: bookName,
+                wordCount: wordCount
+              }}>
+              {({
+                handleSubmit,
+                handleChange,
+                handleReset,
+                values,
+                touched,
+                errors,
+                setValues,
+              }) => (
+                <Row>
+                  <Col>
+                    <Form onSubmit={handleSubmit}>
 
-                <Container>
-                  <Form.Group as={Row}>
-                    <Form.Label column sm="2">Enter book universe name</Form.Label>
-                    <Col sm="10">
-                      <Form.Control
-                        name="universeName"
-                        type="text"
-                        placeholder="Enter name"
-                        value={values.universeName}
-                        onChange={handleChange}
-                        isInvalid={touched.universeName && !!errors.universeName}
-                      />
-                    </Col>
-                  </Form.Group>
-                  <Form.Group as={Row}>
-                    <Form.Label column sm="2">Enter book name</Form.Label>
-                    <Col sm="10">
-                      <Form.Control
-                        name="bookName"
-                        type="text"
-                        placeholder="Enter name"
-                        value={values.bookName}
-                        onChange={handleChange}
-                        isInvalid={touched.bookName && !!errors.bookName}
-                      />
-                    </Col>
-                  </Form.Group>
-                  <Form.Group as={Row}>
-                    <Form.Label column sm="2">Enter number of words</Form.Label>
-                    <Col sm="10">
-                      <Form.Control
-                        name="wordCount"
-                        type="number"
-                        placeholder="Enter number"
-                        value={values.wordCount}
-                        onChange={handleChange}
-                        isInvalid={touched.wordCount && !!errors.wordCount} />
-                    </Col>
-                  </Form.Group>
-                  <Button variant="primary" type="submit"
-                  // onClick={submit(values.name, values.wordCount)}
-                  >
-                    Submit
-                  </Button>
-                  <Button variant="primary" type="reset" onClick={handleReset}>Reset</Button>
-                </Container>
+                      <Form.Group as={Row} className="mb-3" >
+                        <Form.Label column sm="2">Enter book universe name</Form.Label>
+                        <Col sm="10">
+                          <Form.Control
+                            name="universeName"
+                            type="text"
+                            placeholder="Enter name"
+                            value={values.universeName}
+                            onChange={handleChange}
+                            isInvalid={touched.universeName && !!errors.universeName}
+                          />
+                          <Form.Control.Feedback type="invalid">{errors.universeName}</Form.Control.Feedback>
+                        </Col>
+                      </Form.Group>
 
-              </Form>
-            )}
-          </Formik>
+                      <Form.Group as={Row} className="mb-3">
+                        <Form.Label column sm="2">Enter book name</Form.Label>
+                        <Col sm="10">
+                          <Form.Control
+                            name="bookName"
+                            type="text"
+                            placeholder="Enter name"
+                            value={values.bookName}
+                            onChange={handleChange}
+                            isInvalid={touched.bookName && !!errors.bookName}
+                          />
+                          <Form.Control.Feedback type="invalid">{errors.bookName}</Form.Control.Feedback>
+                        </Col>
+                      </Form.Group>
+                      <Form.Group as={Row} className="mb-3">
+                        <Form.Label column sm="2">Enter number of words</Form.Label>
+                        <Col sm="10">
+                          <Form.Control
+                            name="wordCount"
+                            type="number"
+                            placeholder="Enter number"
+                            value={values.wordCount}
+                            onChange={handleChange}
+                            isInvalid={touched.wordCount && !!errors.wordCount} />
+                          <Form.Control.Feedback type="invalid">{errors.wordCount}</Form.Control.Feedback>
+                        </Col>
+                      </Form.Group>
+                      <Button variant="primary" type="submit">
+                        Submit
+                      </Button>
+                      <Button variant="primary" type="reset" onClick={handleReset} >Reset</Button>
+
+                    </Form>
+                  </Col>
+                </Row>
+              )}
+            </Formik>
+          </Card.Body>
         </Card>
       </Container>
 
