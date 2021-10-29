@@ -182,6 +182,8 @@ export default function Home() {
     }
     if (!values.wordCount) errors.wordCount = 'Required';
     else if (values.wordCount < 0) errors.wordCount = 'Couldn`t be negative';
+    else if (!Number.isInteger(values.wordCount)) errors.wordCount = 'Should be an integer';
+    else if (values.wordCount > 1e15) errors.wordCount = 'Value should be in range [0, 1\'000\'000\'000\'000\'000]';
 
     return errors;
   }
@@ -263,10 +265,16 @@ export default function Home() {
                           <Form.Control.Feedback type="invalid">{errors.wordCount}</Form.Control.Feedback>
                         </Col>
                       </Form.Group>
-                      <Button variant="primary" type="submit">
-                        Submit
-                      </Button>
-                      <Button variant="primary" type="reset" onClick={handleReset} >Reset</Button>
+                      <Row className="align-items-center">
+                        <Col xs="auto" className="my-1">
+                          <Button variant="primary" type="submit">
+                            Submit
+                          </Button>
+                        </Col>
+                        <Col xs="auto" className="my-1">
+                          <Button variant="danger" type="reset" onClick={handleReset} >Reset</Button>
+                        </Col>
+                      </Row>
 
                     </Form>
                   </Col>
