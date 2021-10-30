@@ -194,8 +194,8 @@ export default function Home() {
 
   return (
     <>
-      <Bar data={generateDataset(sortData(data))} options={options} />
       <Container fluid="sm">
+        <Bar data={generateDataset(sortData(data))} options={options} />
         <Card>
           <Card.Header>Add book universe</Card.Header>
           <Card.Body>
