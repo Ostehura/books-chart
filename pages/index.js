@@ -188,7 +188,6 @@ export default function Home() {
     return errors;
   }
 
-
   let universeName = "", bookName = "", wordCount = 0;
 
 
