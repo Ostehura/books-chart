@@ -217,7 +217,6 @@ export default function Home() {
                 values,
                 touched,
                 errors,
-                setValues,
               }) => (
                 <Row>
                   <Col>
@@ -268,7 +267,7 @@ export default function Home() {
                       <Row className="align-items-center">
                         <Col xs="auto" className="my-1">
                           <Button variant="primary" type="submit">
-                            Submit
+                            Add
                           </Button>
                         </Col>
                         <Col xs="auto" className="my-1">
