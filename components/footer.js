@@ -7,7 +7,7 @@ export default function Footer() {
         <>
 
             <br />
-            <footer className="footer mt-auto py-3 bg-light ">
+            <footer className="footer mt-auto py-3 bg-light">
                 <div className="container">
                     <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 

@@ -153,47 +153,116 @@
       },
       {
         "name": "So Long, and Thanks for All the Fish",
-        "count":42859
+        "count": 42859
       },
       {
-        "name":"Mostly Harmless",
-        "count":64659
+        "name": "Mostly Harmless",
+        "count": 64659
       }
     ]
   },
   {
-    "name":"Miss Peregrine's Home for Peculiar Children Universe*",
-    "books":[
+    "name": "Miss Peregrine's Home for Peculiar Children Universe*",
+    "books": [
       {
-        "name":"Miss Peregrine's Home for Peculiar Children ",
-        "count":84898
+        "name": "Miss Peregrine's Home for Peculiar Children ",
+        "count": 84898
       },
       {
-        "name":"Hollow City",
-        "count":95667
+        "name": "Hollow City",
+        "count": 95667
       },
       {
-        "name":"Library of Souls",
-        "count":113082
+        "name": "Library of Souls",
+        "count": 113082
+      },
+      {
+        "name": "A map of days",
+        "count": 148304
+      },
+      {
+        "name": "The Conference of Birds",
+        "count": 83421
       }
     ]
   },
   {
-    "name":"His Dark Materisals Universe",
-    "books":[
+    "name": "His Dark Materisals Universe",
+    "books": [
       {
-        "name":"The Golden Compass",
+        "name": "The Golden Compass",
         "count": 112815
       },
       {
-        "name":"The Subtle Knife",
-        "count":  109120
+        "name": "The Subtle Knife",
+        "count": 109120
       },
       {
-        "name":"The Amber Spyglass",
-        "count":168640
+        "name": "The Amber Spyglass",
+        "count": 168640
       }
-
+    ]
+  },
+  {
+    "name": "The Witcher",
+    "books": [
+      {
+        "name": "Blood of Elves ",
+        "count": 119002
+      },
+      {
+        "name": "Time of Contempt",
+        "count": 98969
+      },
+      {
+        "name": "Baptism of Fire",
+        "count": 102557
+      },
+      {
+        "name": "The Tower of the Swallow",
+        "count": 133952
+      },
+      {
+        "name": "The Lady of the Lake",
+        "count": 167440
+      },
+      {
+        "name": "Season of Storms",
+        "count": 125281
+      }
+    ]
+  },
+  {
+    "name": "VasyaMeR",
+    "books": [
+      {
+        "name": "VasyaMer: the way to Uzhhorod",
+        "count": 98282
+      },
+      {
+        "name": "VasyaMer: the war of infinitely number of bugs",
+        "count": 108723
+      },
+      {
+        "name": "VasyaMer: recruting to Facebook",
+        "count": 102129
+      },
+      {
+        "name": "VasyaMeR: recruting to Google",
+        "count": 254038
+      },
+      {
+        "name": "VasyaMer: the way to Snapchat",
+        "count": 87201
+      },
+      {
+        "name": "VasyaMer: far from Irshava",
+        "count": 98736
+      },
+      {
+        "name": "VasyaMer: No way back to Snapchat",
+        "count": 108273
+      }
     ]
   }
 ]
