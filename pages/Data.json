@@ -231,38 +231,5 @@
         "count": 125281
       }
     ]
-  },
-  {
-    "name": "VasyaMeR",
-    "books": [
-      {
-        "name": "VasyaMer: the way to Uzhhorod",
-        "count": 98282
-      },
-      {
-        "name": "VasyaMer: the war of infinitely number of bugs",
-        "count": 108723
-      },
-      {
-        "name": "VasyaMer: recruting to Facebook",
-        "count": 102129
-      },
-      {
-        "name": "VasyaMeR: recruting to Google",
-        "count": 254038
-      },
-      {
-        "name": "VasyaMer: the way to Snapchat",
-        "count": 87201
-      },
-      {
-        "name": "VasyaMer: far from Irshava",
-        "count": 98736
-      },
-      {
-        "name": "VasyaMer: No way back to Snapchat",
-        "count": 108273
-      }
-    ]
   }
 ]
