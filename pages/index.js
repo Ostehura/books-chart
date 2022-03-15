@@ -104,12 +104,12 @@ export default function Home() {
   }
 
   const onReset = () => {
-    console.log("RESET")
+
     setData(DATA);
   }
 
   const generateDataset = (data) => {
-    console.log("generateDataSets");
+
     let datasets = [], labels = [];
     let dsbooks = [];
     let totalDatasets = 0, mbooks = 0;
@@ -155,7 +155,7 @@ export default function Home() {
       }
       totalWordCount.push(count);
     }
-    console.log('total', totalWordCount);
+
     for (let i = 0; i < data.length; i++) {
       for (let j = i + 1; j < data.length; j++) {
         if (totalWordCount[j] > totalWordCount[i]) {
